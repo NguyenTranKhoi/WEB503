@@ -3,6 +3,37 @@ const express = require("express");
 
 const app = express();
 
+//middleware
+
+const check = (req, res, next) => {
+    const status = true;
+    if (status) {
+        console.log("Heloo")
+        next();
+    } else {
+        console.log("Anh ko cos quyeen hello");
+    }
+}
+
+app.get("/api/products", check, (req, res) => {
+    const products = [
+        {
+            id: 1,
+            name: "Product A"
+        },
+        {
+            id: 2,
+            name: "Product B"
+        },
+    ];
+    res.json(products);
+})
+
+// app.use(check)
+// app.use((req, res) => {
+//     console.log("Bước 2");
+// })
+
 // const server = http.createServer((req, res) => {
 //     console.log("url", req.url);
 //     if (req.url === "/") {
@@ -26,6 +57,6 @@ const app = express();
 // });
 
 const PORT = 3000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log("Server is running port", PORT);
 })
