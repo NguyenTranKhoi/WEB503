@@ -1,33 +1,16 @@
-const http = require("http");
-const express = require("express");
+import cors from 'cors';
+import productRouter from '../routes/products';
+import morgan from 'morgan';
+import express from 'express';
 
 const app = express();
-
 //middleware
 
-const check = (req, res, next) => {
-    const status = true;
-    if (status) {
-        console.log("Heloo")
-        next();
-    } else {
-        console.log("Anh ko cos quyeen hello");
-    }
-}
+app.use(cors());
+app.use(morgan('tiny'));
+app.use(express.json())
 
-app.get("/api/products", check, (req, res) => {
-    const products = [
-        {
-            id: 1,
-            name: "Product A"
-        },
-        {
-            id: 2,
-            name: "Product B"
-        },
-    ];
-    res.json(products);
-})
+app.use(productRouter);
 
 // app.use(check)
 // app.use((req, res) => {
