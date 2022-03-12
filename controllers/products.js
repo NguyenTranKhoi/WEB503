@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const Product = mongoose.model("Product", { name: String });
 
 //API thêm sản phẩm
-export const create = (req, res) => {
+export const create = async (req, res) => {
     try {
         const product = await new Product(req.body).save();
         res.json(product)
@@ -15,7 +15,7 @@ export const create = (req, res) => {
 }
 
 //API list sản phẩm
-export const list = (req, res) => {
+export const list = async (req, res) => {
     try {
         const products = await Product.find();
         res.json(products);
