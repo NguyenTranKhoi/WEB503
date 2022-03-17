@@ -4,11 +4,16 @@ const productSchema = new Schema({
     name: {
         type: String,
         minLength: 5,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: Number,
         required: true
+    },
+    category: {
+        type: Object,
+        ref: "Category"
     }
 }, { timestamps: true });
 
