@@ -16,13 +16,19 @@ export const reqireSignin = expressJWT({
 });
 
 export const isAuth = (req, res, id) => {
-    console.log('req.profile', req.profile);
-    console.log('req.auth', req.auth);
-
     const status = req.profile._id == req.auth._id;
     if (!status) {
         res.status(400).json({
             message: "Bạn ko có quyền truy cập"
+        })
+    }
+    next();
+}
+
+export const isAdmin = (req, res, next) => {
+    if (req.profile.role === 0) {
+        res.status(400).json({
+            message: "bạn ko phải là admin"
         })
     }
     next();
