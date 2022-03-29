@@ -5,7 +5,6 @@ import Product from "../models/product";
 
 //API thêm sản phẩm
 export const create = async (req, res) => {
-    console.log(req.body);
     try {
         const product = await new Product(req.body).save();
         console.log('product', product);

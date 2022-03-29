@@ -10,12 +10,12 @@ export const checkAuth = (req, res, next) => {
 }
 
 export const reqireSignin = expressJWT({
-    algorithms: ["HS265"],
-    secret: "123455",
+    algorithms: ["HS256"],
+    secret: "123456",
     requestProperty: "auth"
 });
 
-export const isAuth = (req, res, id) => {
+export const isAuth = (req, res, next) => {
     const status = req.profile._id == req.auth._id;
     if (!status) {
         res.status(400).json({
