@@ -1,6 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 
 const productSchema = new Schema({
+    img: {
+        type: String,
+        required: true,
+        minlength: 5,
+        unique: true
+    },
     name: {
         type: String,
         minLength: 5,
