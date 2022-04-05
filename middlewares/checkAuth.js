@@ -10,7 +10,9 @@ export const checkAuth = (req, res, next) => {
 }
 
 export const reqireSignin = expressJWT({
+    //thuật toán
     algorithms: ["HS256"],
+    //mã bảo mật
     secret: "123456",
     requestProperty: "auth"
 });
