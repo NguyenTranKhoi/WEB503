@@ -10,12 +10,6 @@ const productSchema = new Schema({
         required: true,
         // unique: true
     },
-    nameextra: {
-        type: String,
-        // unique: false
-        // minlength: 3,
-        // required: true
-    },
     pricedrop: {
         type: Number,
         required: true
