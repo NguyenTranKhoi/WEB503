@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, ObjectId } from "mongoose";
 
 const productSchema = new Schema({
     img: {
@@ -8,13 +8,13 @@ const productSchema = new Schema({
         type: String,
         minLength: 5,
         required: true,
-        unique: true
+        // unique: true
     },
     nameextra: {
         type: String,
-        minlength: 3,
-        required: true,
-        unique: true
+        // unique: false
+        // minlength: 3,
+        // required: true
     },
     pricedrop: {
         type: Number,
@@ -25,7 +25,7 @@ const productSchema = new Schema({
         required: true
     },
     category: {
-        type: Object,
+        type: ObjectId,
         ref: "Category"
     }
 }, { timestamps: true });
