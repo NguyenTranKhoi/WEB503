@@ -1,4 +1,5 @@
-import mongoose, { Schema, ObjectId } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const productSchema = new Schema({
     img: {
