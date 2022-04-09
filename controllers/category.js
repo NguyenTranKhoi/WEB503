@@ -50,6 +50,7 @@ export const update = async (req, res) => {
     const options = { new: true }
     try {
         const category = await Category.findOneAndUpdate(condition, document, options).exec();
+        res.json(category);
     } catch (error) {
 
     }
