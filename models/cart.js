@@ -14,6 +14,18 @@ const cartSchame = new Schema({
     quantiny: {
         type: Number,
         required: true
+    },
+    color: {
+        type: String,
+        // required: true
+    },
+    size: {
+        type: String,
+        // required: true
+    },
+    user: {
+        type: ObjectId,
+        ref: "User"
     }
 }, { timestamps: true })
 
