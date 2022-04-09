@@ -8,6 +8,14 @@ export const listcart = async (req, res) => {
 
     }
 }
+export const getOne = async (req, res) => {
+    try {
+        const cart = await Cart.findOne({ _id: req.params.id }).exec();
+        res.json(cart);
+    } catch (error) {
+
+    }
+}
 export const addcart = async (req, res) => {
     try {
         const AddCart = await new Cart(req.body).save()
@@ -28,6 +36,14 @@ export const removecart = async (req, res) => {
     try {
         const remove = await Cart.findOneAndDelete({ _id: req.params.id }).exec()
         res.json(remove)
+    } catch (error) {
+
+    }
+}
+export const update = async (req, res) => {
+    try {
+        const cart = await Cart.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }).exec();
+        res.json(cart);
     } catch (error) {
 
     }
